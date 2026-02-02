@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreX Team | الصفحة الرسمية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ضيف هذا الكود بملف الـ CSS */
+
+/* استهدف صورة اللوجو */
+.brand img, header img { 
+    /* هذا السطر السحري: يخلي الألوان الغامقة بالصورة تصير شفافة */
+    mix-blend-mode: screen !important; 
+    
+    /* احتياط: للتأكد من عدم وجود خلفية مضافة بالكود */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* تأكد من الصندوق اللي شايل الصورة هم ما بيه لون */
+.brand, .logo-container {
+    background: transparent !important;
+}
+        @media (max-width: 768px) {
+    .nav-links {
+        display: none !important; /* مخفية افتراضياً */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 25, 47, 0.98);
+        padding: 20px;
+        text-align: center;
+        border-bottom: 2px solid #00d4ff;
+    }
+
+    .nav-links.active {
+        display: flex !important; /* تظهر عند إضافة كلاس active */
+    }
+}
+        /* تنسيق أزرار التواصل */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    background: rgba(255,255,255,0.1);
+}
+.whatsapp:hover { background: #25D366; box-shadow: 0 0 15px #25D366; }
+.telegram:hover { background: #0088cc; box-shadow: 0 0 15px #0088cc; }
+.instagram:hover { background: #E1306C; box-shadow: 0 0 15px #E1306C; }
+
+/* تنسيق الفورم */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-form input, .contact-form textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+.contact-form input:focus { border-color: var(--primary-color); }
+
+.submit-btn {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.submit-btn:hover {
+    letter-spacing: 2px;
+    box-shadow: 0 0 20px var(--primary-color);
+}
+        /* نبضة النظام */
+.status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-color);
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* تأثير الـ Glitch المستمر لاسم التيم */
+h1 {
+    animation: glitch 2s linear infinite; /* يشتغل تلقائياً كل 3 ثواني */
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes glitch {
+    0%, 90%, 100% { text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); transform: translate(0); }
+    92% { text-shadow: -3px 0 #ff00c1, 3px 0 #00fff9; transform: translate(-2px, 1px); }
+    94% { text-shadow: 3px 0 #ff00c1, -3px 0 #00fff9; transform: translate(2px, -1px); }
+    96% { text-shadow: -2px 0 #ff00c1, 2px 0 #00fff9; transform: translate(-1px, 2px); }
+}
+        /* تنسيق الناف بار */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(10, 25, 47, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    padding: 15px 5%;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brand {
+    font-weight: 900;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--primary-color); }
+.menu-icon {
+    display: none; /* يختفي بالحاسبة */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* تعديلات الموبايل للقائمة */
+@media (max-width: 768px) {
+    .menu-icon { display: block; }
+    .nav-links {
+        position: absolute;
+        top: 60px; left: 0;
+        width: 100%;
+        background: #0a192f;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        display: none; /* مخفي افتراضياً */
+        border-bottom: 2px solid var(--primary-color);
+    }
+    .nav-links.active { display: flex; }
+}
+
+        /* إعدادات الموبايل والأجهزة اللوحية */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* تصغير حجم العنوان بالموبايل */
+        letter-spacing: 2px;
+    }
+
+    .logo-container {
+        width: 180px; /* تصغير اللوجو حتى يناسب الشاشة */
+        height: 180px;
+    }
+
+    .grid-container {
+        /* جعل الأعضاء يظهرون 2 في كل سطر بدل 4 */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .member-img {
+        width: 90px; /* تصغير صور الأعضاء */
+        height: 90px;
+    }
+
+    .member-name {
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 40px 15px; /* تقليل المسافات الجانبية */
+    }
+
+    .ticker-wrapper {
+        font-size: 12px; /* تصغير شريط الأخبار */
+    }
+}
+
+/* إعدادات الموبايلات الصغيرة جداً */
+@media (max-width: 480px) {
+    .grid-container {
+        /* عضو واحد فقط في كل سطر لسهولة التصفح */
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        margin: 0 10px;
+    }
+}
+        /* انيميشن خلفية النجوم */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.3;
+    z-index: -1;
+    animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+}
+
+/* تأثير التوهج للنصوص */
+.glow-text {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+        /* إعدادات الألوان والخطوط العامة */
+        :root {
+            --primary-color: #00d4ff; /* لون ازرق نيون مثل اللوجو */
+            --secondary-color: #0a192f; /* لون خلفية غامق */
+            --card-bg: rgba(255, 255, 255, 0.05); /* خلفية شفافة للكروت */
+            --text-color: #e6f1ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            background-image: radial-gradient(circle at 50% 50%, #112240 0%, #0a192f 100%);
+            overflow-x: hidden;
+        }
+
+        /* تنسيق الهيدر واللوجو */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            position: relative;
+        }
+
+        .logo-container {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        p.tagline {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* تنسيق الأقسام العامة */
+        section {
+            padding: 80px 10%;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        /* شبكة البطاقات (للاعضاء والانجازات) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* تصميم الكرت (Card Design) */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        /* صور الأعضاء */
+        .member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #333; /* لون مؤقت بدل الصورة */
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-color);
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* قسم الانجازات */
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .cert-card {
+            border-left: 4px solid var(--primary-color);
+            text-align: right;
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,0,0,0.3);
+            margin-top: 50px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* انيميشن بسيط للوغو */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* استجابة للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            section { padding: 50px 5%; }
+        }
+        /* تمييز خبر الورشة بلون مختلف */
+.featured-news {
+    border-left: 4px solid #ff4d4d !important; /* لون أحمر/برتقالي للتنبيه */
+    background: linear-gradient(45deg, #112240, #1a2f4e); /* خلفية متدرجة */
+}
+
+.news-badge {
+    background: #ff4d4d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+/* هذا الكود يخلي محتوى كارت الأخبار يبدأ من اليسار */
+.news-card {
+    text-align: left !important;  /* يجبر النص يروح يسار */
+    direction: ltr !important;    /* يخلي اتجاه القراءة من اليسار لليمين (عشان الانكليزي) */
+    align-items: flex-start;      /* اذا كنت تستخدم flexbox */
+}
+
+/* إذا تريد العنوان الكبير (Team news) هم يروح يسار ضيف هذا: */
+/* .section-title { text-align: left; } */
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="CoreX.png">
+</head>
+
+<body>
+    <script>
+function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    
+    // هذا السطر يضيف أو يحذف كلاس اسمه active في كل ضغطة
+    if (navLinks.classList.contains("active")) {
+        navLinks.classList.remove("active");
+    } else {
+        navLinks.classList.add("active");
+    }
+}
+</script>
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="brand">CoreX</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#team" onclick="toggleMenu()">Team members</a></li>
+            <li><a href="#committee" onclick="toggleMenu()">Organizing Committee</a></li>
+            <li><a href="#committee" onclick="toggleMenu()">Organizing Committee</a></li>
+            <li><a href="#specialties" onclick="toggleMenu()"> CoreX Specialties</a></li>
+            <li><a href="#skills" onclick="toggleMenu()">Team member skills  </a></li>
+            <li><a href="#news" onclick="toggleMenu()">Team news</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Connect with CoreX</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <header>
+        <div class="logo-container">
+            <img src="CoreX.png" alt="CoreX Logo">
+        </div>
+        <h1>CoreX</h1>
+        <p class="tagline">. A silent determination & a lasting impact</p>
+    </header>
+    <div class="status-bar">
+    <span class="pulse-dot"></span>
+    <span class="status-text">SYSTEM STATUS: <span style="color: var(--primary-color);">ONLINE</span></span>
+</div>
+
+    <section id="team">
+        <h2 class="section-title">Team members</h2>
+        <div class="grid-container">
+            <div class="card">
+                <img src="Sajad.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name">سجاد رياض جدوع</h3>
+                <p class="member-role">Leader</p>
+                <p class="member-role">Cyber ​​security</p>
+            </div>
+
+            <div class="card">
+                <img src="Karar.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name"> كرار عبد الكريم اسعد</h3>
+                <p class="member-role">CO-Leader</p>
+                <p class="member-role">Cyber ​​security</p>
+            </div>
+
+            <div class="card">
+                <img src="Abdullah11.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name">عبدالله حسين غازي</h3>
+                <p class="member-role">Cyber ​​security</p>
+            </div>
+            
+
+            <div class="card"><img src="safe11.jpg" class="member-img"><h3 class="member-name"> سيف رياض جدوع</h3><p class="member-role">Cyber ​​security</p></div>
+             <div class="card"><img src="Tabar.jpg" class="member-img"><h3 class="member-name">تبارك حمزه حمود  </h3><p class="member-role">Cyber ​​security</p></div>
+             <div class="card"><img src="Karar hader.jpg" class="member-img"><h3 class="member-name">كرار حيدر كاظم</h3><p class="member-role">Cyber ​​security</p></div>
+             <div class="card"><img src="Husssein.jpg" class="member-img"><h3 class="member-name">حسين احمد كاظم</h3><p class="member-role">Cyber ​​security</p></div>
+             <div class="card"><img src="Yusef.jpg" class="member-img"><h3 class="member-name">يوسف الموسوي</h3><p class="member-role">Cyber ​​security</p></div>
+             <div class="card"><img src="Ali1.jpg" class="member-img"><h3 class="member-name">علي راضي</h3><p class="member-role">network</p></div>
+             <div class="card"><img src="Muhammad_A.jpg" class="member-img"><h3 class="member-name">محمد امير</h3><p class="member-role">network</p></div>
+             <div class="card"><img src="Muhammad.jpg" class="member-img"><h3 class="member-name">محمد موسى</h3><p class="member-role">network</p></div>
+             <div class="card"><img src="Abdullah.jpg" class="member-img"><h3 class="member-name">عبدلله خالد</h3><p class="member-role">network</p></div>
+             <div class="card"><img src="Adel.jpg" class="member-img"><h3 class="member-name">عادل ازهر خليل </h3><p class="member-role">network</p></div>
+             
+
+        </div>
+        <section id="committee">
+        <h2 class="section-title">Organizing Committee</h2>
+        <div class="grid-container">
+            
+            <div class="card">
+                <img src="Abdullah11.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name">عبدالله حسين غازي</h3>
+                <p class="member-role">Chairman of the Committee</p>
+            </div>
+
+            <div class="card">
+                <img src="safe11.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name">سيف رياض جدوع</h3>
+                <p class="member-role">Coordination Officer</p>
+            </div>
+
+            <div class="card">
+                <img src="Sajad.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name">سجاد رياض جدوع</h3>
+                <p class="member-role">Committee member</p>
+            </div>
+
+            <div class="card">
+                <img src="Karar.jpg" alt="صورة العضو" class="member-img">
+                <h3 class="member-name">كرار عبد الكريم اسعد</h3>
+                <p class="member-role">Committee member</p>
+            </div>
+
+        </div>
+    </section>
+   <section id="specialties">
+        <h2 class="section-title">CoreX Specialties</h2>
+        <div class="grid-container">
+            <div class="card">
+                <div class="achievement-icon">💻</div>
+                <h3 class="member-name">Technical development</h3>
+                <p>Building software solutions and websites using the latest technologies</p>
+            </div>
+            <div class="card">
+                <div class="achievement-icon">🎨</div>
+                <h3 class="member-name">Creative design</h3>
+                <p>Creating visual identities and logos that reflect the team's strength</p>
+            </div>
+            <div class="card">
+                <div class="achievement-icon">📈</div>
+                <h3 class="member-name">Planning and management</h3>
+                <p>Organizing projects and tournaments with high professionalism</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Team skills</h2>
+        <div class="grid-container">
+            <div class="card cert-card">
+                <h3 class="member-name">Data analysis</h3>
+                
+            </div>
+            <div class="card cert-card">
+                <h3 class="member-name">Cinematic montage</h3>
+                
+            </div>
+            <div class="card cert-card">
+                <h3 class="member-name">Information security</h3>
+                
+            </div>
+            
+        </div>
+    </section>
+  <section id="news" class="news-section">
+    <h2 class="section-title">Team news</h2>
+    <div class="news-container">
+        
+        <div class="news-card featured-news">
+            <div class="news-badge">🔥 almost</div>
+            <span class="news-date">2026/02/10  | the hour 9:00 morning</span>
+            <h3>Workshop: Zuro trust</h3>
+            <p>
+               A special workshop will be held for team members led by Team CoreX.
+                <br>
+                <strong>Interviewer:</strong> Explaining the team structure, distributing tasks, and starting work on the first project.
+                <br>
+                <span style="color: #64ffda; font-size: 0.9em;">📍 Location: College of Information Technology, Conference Hall </span>
+            </p>
+        </div>
+
+
+    </div>
+</section>
+
+    <section id="contact">
+    <h2 class="section-title">Connect with CoreX</h2>
+    <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        
+        <div class="card" data-tilt>
+            <h3>Our official channels</h3>
+            <p style="margin-bottom: 20px;">.We are available 24 hours a day to answer your questions</p>
+            <div class="social-links">
+                <a href="https://wa.me/9647838513769" class="social-btn whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/IT_CSY" class="social-btn telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://instagram.com/cusgz" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt>
+            <form action="https://formspree.io/f/xeegqvop" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="full name" required>
+    <input type="email" name="_replyto" placeholder="e-mail" required>
+    <textarea name="message" placeholder="...Your message or idea" rows="4" required></textarea>
+    <button type="submit" class="submit-btn">Send Message</button>
+</form>
+        </div>
+
+    </div>
+    
+</section>
+    
+    <footer>
+        <p>All rights reserved&copy;  For a team CoreX</p>
+    </footer>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+<script>
+    // تفعيل تأثير الميلان على كل الكروت واللوجو
+    VanillaTilt.init(document.querySelectorAll(".card, .logo-container"), {
+        max: 15, // قوة الميلان
+        speed: 400, // سرعة الحركة
+        glare: true, // إضافة لمعة زجاجية
+        "max-glare": 0.3,
+    });
+</script>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        // هذا السطر هو اللي يفتح ويغلق القائمة
+        navLinks.classList.toggle('active');
+        
+        // تأثير بصري بسيط عند الضغط
+        menuToggle.style.opacity = "0.5";
+        setTimeout(() => menuToggle.style.opacity = "1", 100);
+    });
+
+    // إغلاق القائمة عند الضغط على أي رابط
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+</script>
+<script>
+    // دالة التحكم بالقائمة والجيروسكوب
+    function toggleMenu() {
+        const navLinks = document.getElementById("navLinks");
+        
+        // 1. فتح وإغلاق القائمة
+        navLinks.classList.toggle("active");
+
+        // 2. طلب إذن الجيروسكوب (خاص بالآيفون iOS)
+        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission()
+                .then(permissionState => {
+                    if (permissionState === 'granted') {
+                        window.addEventListener('deviceorientation', handleGyro);
+                    }
+                })
+                .catch(console.error);
+        } else {
+            // للأندرويد والأجهزة التي لا تتطلب إذن
+            window.addEventListener('deviceorientation', handleGyro);
+        }
+    }
+
+    // دالة تحريك الخلفية (الكهرباء أو النجوم) مع ميلان الجهاز
+    function handleGyro(event) {
+        const x = event.beta;  // الميلان للأمام والخلف
+        const y = event.gamma; // الميلان لليمين واليسار
+
+        // تحريك الخلفية بشكل بسيط لتعطي إيحاء العمق (3D)
+        const bg = document.body;
+        bg.style.backgroundPosition = `${y * 0.5}px ${x * 0.5}px`;
+    }
+</script>
+
+</body>
+</html>
